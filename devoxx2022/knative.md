@@ -105,8 +105,22 @@ She said that the key benefits of Knative serving are:
 and she said to look for the knative.dev tutorials
 
 
+## Comments
+Edmund, 2022-05-30
+*Really interesting set of notes Rebecca - thanks for putting together. Also IMO great way of sharing!*
+> When you're trying to troubleshoot a system, you need to be able to see the flow through it.
+In a monolith you can use an IDE to track down where something is called from
 
+Tangential to kubernetes, but IMO relevant to your wider point: just to note that personally, seeing flow is *already* a pain point in monolith. Just one that some in Tech may not be quite so aware of, as tech *have* the IDE fallback to see flow.
 
+As a scientist, am sometimes called on to help debug issues in operational science models, as I have subject matter expertise which colleagues in Tech may not. In doing this, I've often had to work through operational architecture layers around the models, in order to understand the call context (when model is being run, arguments going in, ...). These architecture layers are written by my Tech colleagues, and are in Javascript. The main tools at my disposal for tracking flow are BitBucket/GitHub. I don't have Javascript experience, or knowledge of how to set up an IDE to see the flow between widely-separated repos. And the need here comes up *just* infrequently enough that it's hard to justify upskilling myself. Easier to just try to impute flow manually, via hunting through imports, repositories, commit histories & ancient tickets, and using the sort of diagrams/memory cribs you mention. 
 
+Easier, but very painful: such a shame that it only seems possible to do this manually - that it doesn't seem possible to get these sorts of flow insights automagically, e.g. via [code navigation on GitHub](https://docs.github.com/en/repositories/working-with-files/using-files/navigating-code-on-github).
+* *All ears if I'm missing something on this!*
 
+Our architecture layers are now moving over to AWS, and becoming more decoupled/microservice-y - sadly, I don't think this will help on this interpretability-of-flow painpoint.
+* *Again happy to be corrected if possible!*
 
+In past we've also done Tech/Science collabs using pipelines, which in principle help separate concerns, letting me be agnostic to architecture layers, and focus on my science layer, debugging by injecting some input data (thought to trigger bug) at the interface to model.
+Quite powerful, and probably removes ~90% of my need to inspect flow in architecture layers.
+But needs some effort to have this sort of pipeline around all models - we've only really done this for one operational one (albeit being done for a lot of incoming ones).
